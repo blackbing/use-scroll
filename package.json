@@ -33,6 +33,7 @@
     "history": "^1.12.1 || ^2.0.0"
   },
   "dependencies": {
-    "dom-helpers": "^2.4.0"
+    "dom-helpers": "^2.4.0",
+    "exenv": "^1.2.0"
   }
 }

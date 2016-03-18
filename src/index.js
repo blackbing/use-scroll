@@ -4,6 +4,7 @@
 import scrollTop from 'dom-helpers/query/scrollTop';
 import on from 'dom-helpers/events/on';
 import throttle from 'lodash.throttle';
+import { canUseDOM } from 'exenv';
 
 const prefix = '@@POS';
 const scrollThreshold = 50;
@@ -52,7 +53,7 @@ function scrollToState(key) {
 }
 
 export default function(history) {
-  if (__SERVER__) {
+  if (!canUseDOM) {
     return history;
   }
   let currentKey = null;
