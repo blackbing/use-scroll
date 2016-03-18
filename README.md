@@ -6,7 +6,7 @@ Enhance your history object with this library to get standard scroll behavior af
 
 ```js
 import { browserHistory } from 'react-router';
-import useScroll from 'use-scroll';
+import useScroll from 'use-scroll-behavior';
 const history = useScroll(browserHistory);
 ```
 
@@ -15,7 +15,7 @@ const history = useScroll(browserHistory);
 ### Installation
 
 ```
-$ npm install history use-scroll
+$ npm install history use-scroll-behavior
 ```
 
 ## TODO
