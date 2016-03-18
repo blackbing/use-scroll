@@ -1,6 +1,6 @@
 {
   "name": "use-scroll",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Scroll behaviors for use with history, inspired by scroll-behavior",
   "main": "lib/index.js",
   "files": [
@@ -10,6 +10,10 @@
     "build": "npm run build-cjs",
     "build-cjs": "rimraf lib && babel ./src -d lib --ignore '__tests__'",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackbing/use-scroll.git"
   },
   "bugs": {
     "url": "https://github.com/blackbing/use-scroll/issues"
