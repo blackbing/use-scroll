@@ -4,10 +4,20 @@ Scroll behaviors for use with [`history`](https://github.com/reactjs/history). I
 
 Enhance your history object with this library to get standard scroll behavior after history changed.
 
-```js
+```jsx
 import { browserHistory } from 'react-router';
 import useScroll from 'use-scroll-behavior';
 const history = useScroll(browserHistory);
+// ...
+export default class App extends Component {
+  render() {
+    return (
+      <Router history={history}>
+      //..your routes
+      </Router>
+    );
+  }
+}
 ```
 
 ## Guide
