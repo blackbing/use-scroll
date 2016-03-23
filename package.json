@@ -29,7 +29,6 @@
     "eslint": "^1.8.0",
     "eslint-config-rackt": "^1.1.1",
     "history": "^2.0.0",
-    "lodash.throttle": "^4.0.1",
     "rimraf": "^2.4.3",
     "webpack": "^1.12.13"
   },
@@ -38,6 +37,7 @@
   },
   "dependencies": {
     "dom-helpers": "^2.4.0",
-    "exenv": "^1.2.0"
+    "exenv": "^1.2.0",
+    "lodash.throttle": "^4.0.1"
   }
 }
