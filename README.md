@@ -1,3 +1,5 @@
+# use-scroll-behavior [![Build Status](https://travis-ci.org/blackbing/use-scroll-behavior.svg?branch=master)](https://travis-ci.org/blackbing/use-scroll-behavior)
+
 Scroll behaviors for use with [`history`](https://github.com/reactjs/history). Inspired by [`scroll-behavior`](https://github.com/taion/scroll-behavior) and simplify the behavior.
 
 ## Usage
