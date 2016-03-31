@@ -8,7 +8,7 @@ import isArray from 'lodash.isarray'
 import { canUseDOM } from 'exenv'
 
 const prefix = '@@POS'
-const scrollThreshold = 50
+const scrollThreshold = 150
 
 let STORAGE_FAIL = false
 function saveState(key, y) {
