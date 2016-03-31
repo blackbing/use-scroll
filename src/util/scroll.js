@@ -15,7 +15,7 @@ export function getState(key) {
     return sessionStorage.getItem(`${prefix}${key}`)
   }
 }
-export function createKey(loc, config) {
+export function createKey(loc, config={}) {
   let queryString = ''
   if (config.excludePath) {
     const excludePath = config.excludePath
