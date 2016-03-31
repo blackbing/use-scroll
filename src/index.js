@@ -33,17 +33,17 @@ function createKey(loc, config) {
     if (isArray(excludePath)) {
       excludePath.forEach( (pathReg) => {
         if (pathReg.test(loc.pathname)) {
-          excluded = true;
-          return false;
+          excluded = true
+          return false
         }
       });
     } else {
       if (excludePath.test(loc.pathname)) {
-        excluded = true;
+        excluded = true
       }
     }
     if (excluded) {
-      return null;
+      return null
     }
   }
   if (loc.query && typeof loc.query === 'object') {
