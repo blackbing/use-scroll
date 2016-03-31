@@ -16,8 +16,14 @@ function getState(key) {
   return sessionStorage.getItem(`${prefix}${key}`)
 }
 function createKey(loc) {
-  const query = loc.query
-  const queryString = Object.keys(query).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(query[k])}`).join('&')
+  let queryString = '';
+  if (loc.query && typeof loc.query === 'object') {
+    const query = loc.query
+    queryString = '?' + Object.keys(query).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(query[k])}`).join('&')
+  } else if (loc.search) {
+    queryString = loc.search;
+  }
+
   return `${loc.pathname}?${queryString}`
 }
 
