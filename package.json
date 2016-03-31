@@ -1,6 +1,6 @@
 {
   "name": "use-scroll-behavior",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Scroll behaviors for use with history, inspired by scroll-behavior",
   "main": "lib/index.js",
   "files": [

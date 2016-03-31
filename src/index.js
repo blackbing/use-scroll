@@ -36,7 +36,7 @@ function createKey(loc, config) {
           excluded = true
           return false
         }
-      });
+      })
     } else {
       if (excludePath.test(loc.pathname)) {
         excluded = true
