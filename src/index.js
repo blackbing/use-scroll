@@ -9,19 +9,28 @@ import { canUseDOM } from 'exenv'
 const prefix = '@@POS'
 const scrollThreshold = 50
 
+let STORAGE_FAIL = false
 function saveState(key, y) {
-  sessionStorage.setItem(`${prefix}${key}`, `${y}`)
+  try {
+    sessionStorage.setItem(`${prefix}${key}`, `${y}`)
+  } catch (e) {
+    STORAGE_FAIL = true
+  }
 }
 function getState(key) {
-  return sessionStorage.getItem(`${prefix}${key}`)
+  if (STORAGE_FAIL) {
+    return null
+  } else {
+    return sessionStorage.getItem(`${prefix}${key}`)
+  }
 }
 function createKey(loc) {
-  let queryString = '';
+  let queryString = ''
   if (loc.query && typeof loc.query === 'object') {
     const query = loc.query
     queryString = '?' + Object.keys(query).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(query[k])}`).join('&')
   } else if (loc.search) {
-    queryString = loc.search;
+    queryString = loc.search
   }
 
   return `${loc.pathname}?${queryString}`
@@ -71,8 +80,10 @@ export default function (history) {
     !scrollToHash(loc) && !scrollToState(currentKey) && window.scrollTo(0, 0)
   })
   const onScroll = () => {
-    const y = scrollTop(window)
-    saveState(currentKey, y)
+    if (!STORAGE_FAIL) {
+      const y = scrollTop(window)
+      saveState(currentKey, y)
+    }
   }
 
   on(window, 'scroll', throttle(onScroll, scrollThreshold))
