@@ -33,7 +33,7 @@ function createKey(loc) {
     queryString = loc.search
   }
 
-  return `${loc.pathname}?${queryString}`
+  return `${loc.pathname}${queryString}`
 }
 
 function scrollToHash(loc) {
