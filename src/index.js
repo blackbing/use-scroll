@@ -82,7 +82,9 @@ export default function (history) {
   const onScroll = () => {
     if (!STORAGE_FAIL) {
       const y = scrollTop(window)
-      saveState(currentKey, y)
+      if (y) {
+        saveState(currentKey, y)
+      }
     }
   }
 
