@@ -4,6 +4,7 @@
 import scrollTop from 'dom-helpers/query/scrollTop'
 import on from 'dom-helpers/events/on'
 import throttle from 'lodash.throttle'
+import isArray from 'lodash.isarray'
 import { canUseDOM } from 'exenv'
 
 const prefix = '@@POS'
@@ -24,8 +25,27 @@ function getState(key) {
     return sessionStorage.getItem(`${prefix}${key}`)
   }
 }
-function createKey(loc) {
+function createKey(loc, config) {
   let queryString = ''
+  if (config.excludePath) {
+    const excludePath = config.excludePath
+    let excluded = false
+    if (isArray(excludePath)) {
+      excludePath.forEach( (pathReg) => {
+        if (pathReg.test(loc.pathname)) {
+          excluded = true;
+          return false;
+        }
+      });
+    } else {
+      if (excludePath.test(loc.pathname)) {
+        excluded = true;
+      }
+    }
+    if (excluded) {
+      return null;
+    }
+  }
   if (loc.query && typeof loc.query === 'object') {
     const query = loc.query
     queryString = '?' + Object.keys(query).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(query[k])}`).join('&')
@@ -67,13 +87,13 @@ function scrollToState(key) {
   return true
 }
 
-export default function (history) {
+export default function (history, config={}) {
   if (!canUseDOM) {
     return history
   }
   let currentKey = null
   history.listen( function (loc) {
-    currentKey = createKey(loc)
+    currentKey = createKey(loc, config)
     // first try to check hash
     // second try to scrollTo State
     // finally scrollToTop
@@ -82,7 +102,7 @@ export default function (history) {
   const onScroll = () => {
     if (!STORAGE_FAIL) {
       const y = scrollTop(window)
-      if (y) {
+      if (y && currentKey) {
         saveState(currentKey, y)
       }
     }
