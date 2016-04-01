@@ -5,6 +5,7 @@ const canUseStorageKey = 'canUseStorageTest'
   try {
     sessionStorage.setItem(canUseStorageKey, 'test')
     sessionStorage.getItem(canUseStorageKey)
+    sessionStorage.removeItem(canUseStorageKey)
   } catch (e) {
     canUseStorage = false
   }
