@@ -56,10 +56,14 @@ export function scrollToHash(loc) {
 
   if (hashParts.length >= 2) {
     const _hash = hashParts[1]
-    const element = document.querySelector(`#${_hash}`)
-    if (element) {
-      element.scrollIntoView()
-      return true
+    try {
+      const element = document.querySelector(`#${_hash}`)
+      if (element) {
+        element.scrollIntoView()
+        return true
+      }
+    } catch (e) {
+      return false
     }
   }
   return false
