@@ -1,6 +1,6 @@
 {
   "name": "use-scroll-behavior",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Scroll behaviors for use with history, inspired by scroll-behavior",
   "main": "lib/index.js",
   "files": [
@@ -58,7 +58,7 @@
   "dependencies": {
     "dom-helpers": "^2.4.0",
     "exenv": "^1.2.0",
-    "lodash.isarray": "^4.0.0",
-    "lodash.throttle": "^4.0.1"
+    "lodash.debounce": "^4.0.8",
+    "lodash.isarray": "^4.0.0"
   }
 }

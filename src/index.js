@@ -3,7 +3,7 @@
 
 import scrollTop from 'dom-helpers/query/scrollTop'
 import on from 'dom-helpers/events/on'
-import throttle from 'lodash.throttle'
+import debounce from 'lodash.debounce'
 import { canUseDOM } from 'exenv'
 import {
   createKey,
@@ -36,6 +36,6 @@ export default function (history, config={}) {
     }
   }
 
-  on(window, 'scroll', throttle(onScroll, scrollThreshold))
+  on(window, 'scroll', debounce(onScroll, scrollThreshold))
   return history
 }
